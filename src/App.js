@@ -27,7 +27,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Text input value: ${textInputValue}`);
+    console.log(`Text input values: ${textInputValue}`);
     console.log(`Dropdown value: ${dropdownValue}`);
     
   };
