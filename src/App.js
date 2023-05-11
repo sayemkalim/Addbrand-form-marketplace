@@ -50,7 +50,7 @@ function App() {
       <FormControl>
         <InputLabel >Select an option</InputLabel>
         <Select style={selectStyle} value={dropdownValue} onChange={handleDropdownChange}>
-          <MenuItem value="option1">Option 1</MenuItem>
+          <MenuItem value="option1">Sneaker</MenuItem>
           <MenuItem value="option2">Option 2</MenuItem>
           <MenuItem value="option3">Option 3</MenuItem>
           <MenuItem value="option4">Option 4</MenuItem>
