@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { TextField, Button, Select, MenuItem, FormControl, InputLabel ,Grid ,TextareaAutosize} from "@mui/material";
-
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 function App() {
   const [textInputValue, setTextInputValue] = useState("");
   const [dropdownValue, setDropdownValue] = useState("");
+  const [priceInputValue, setPriceInputValue] = useState("");
   const [message, setMessage] = useState("");
 
   const [showTabs, setShowTabs] = useState(false);
  const [activeTab, setActiveTab] = useState(0);
+ const [isOnSale, setIsOnSale] = useState(false);
+
+const handleOnSaleChange = () => {
+  setIsOnSale(!isOnSale);
+};
   const handleButtonClick = () => {
     setShowTabs(true);
   };
@@ -36,9 +43,9 @@ function App() {
 
   return (
     <>
-    <h2>fff & Videos</h2>
+    <h2>Images & Videos</h2>
     <div style={div1Style}>
-    This is div 1!
+    Images!
       </div>
       <div style={div2Style}>
         This is div 2!
@@ -50,24 +57,34 @@ function App() {
       <FormControl>
         <InputLabel >Select an option</InputLabel>
         <Select style={selectStyle} value={dropdownValue} onChange={handleDropdownChange}>
-          <MenuItem value="option1">Option 1</MenuItem>
-          <MenuItem value="option2">Option 2</MenuItem>
-          <MenuItem value="option3">Option 3</MenuItem>
-          <MenuItem value="option4">Option 4</MenuItem>
+          <MenuItem value="option1">Men Footwear</MenuItem>
+          <MenuItem value="option2">Women Footwear</MenuItem>
+          <MenuItem value="option3">Kids Footwear</MenuItem>
         </Select>
         <div>
       <Button style={buttonStyle} onClick={handleButtonClick}>Create Category</Button>
       {showTabs && (
         <div>
           <div className="tab-buttons">
-            <Button  onClick={() => handleTabClick(1)}>Men</Button>
-            <Button onClick={() => handleTabClick(2)}>Women</Button>
-            <Button onClick={() => handleTabClick(3)}>Kids</Button>
+            <Button style={tabStyle} onClick={() => handleTabClick(1)}>Men</Button>
+            <Button style={tabStyle}onClick={() => handleTabClick(2)}>Women</Button>
+            <Button style={tabStyle}onClick={() => handleTabClick(3)}>Kids</Button>
           </div>
           <div className="tab-content">
-            {activeTab === 1 && <p>Kurta</p>}
-            {activeTab === 2 && <p>Plazoo</p>}
-            {activeTab === 3 && <p>Payjama</p>}
+            {activeTab === 1 && <Button style={tabStyle} >Kurta</Button>}
+            {activeTab === 2 && <Button style={tabStyle} >Lehanga</Button>}
+            {activeTab === 3 && <Button style={tabStyle} >Shirt</Button>}
+           {activeTab === 3 && <TextField
+            label="Enter New Category"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />} 
+             {activeTab === 3 &&<Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>}
           </div>
         </div>
       )}
@@ -111,6 +128,47 @@ function App() {
           </Button>
         </Grid>
       </Grid>
+      <h2>Pricing</h2>
+      <TextField
+            label=" ₹ Price"
+            value={priceInputValue}
+            onChange={(event) => setPriceInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+          />
+           <FormControlLabel
+      control={
+        <Switch checked={isOnSale} onChange={handleOnSaleChange} />
+      }
+      label="On Sale"
+    />
+    {isOnSale && (
+      <div>
+     <Grid container spacing={2} alignItems="center">
+        <Grid item xs={4}>
+          <TextField
+            label="₹ Sale Price"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label="% Discount"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        </Grid>
+      </div>
+    )}
+   
       </FormControl> 
     </form>
 
@@ -142,6 +200,13 @@ const div2Style = {
 const buttonStyle = {
   width: '33%',
   //  marginLeft:'20px',
+   marginTop:"30px",
+    color: 'white',
+    backgroundColor: '#7d5ffe',
+};
+const tabStyle = {
+  width: '25%',
+  marginLeft:'20px',
    marginTop:"30px",
     color: 'white',
     backgroundColor: '#7d5ffe',
