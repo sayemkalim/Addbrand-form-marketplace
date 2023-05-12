@@ -43,7 +43,7 @@ const handleOnSaleChange = () => {
 
   return (
     <>
-    <h2>Images & Videos</h2>
+    <h2>Sayem & Videos</h2>
     <div style={div1Style}>
     Images!
       </div>
