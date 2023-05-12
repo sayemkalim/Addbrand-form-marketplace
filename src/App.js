@@ -136,39 +136,7 @@ const handleOnSaleChange = () => {
             variant="outlined"
             margin="normal"
           />
-           <FormControlLabel
-      control={
-        <Switch checked={isOnSale} onChange={handleOnSaleChange} />
-      }
-      label="On Sale"
-    />
-    {isOnSale && (
-      <div>
-     <Grid container spacing={2} alignItems="center">
-        <Grid item xs={4}>
-          <TextField
-            label="₹ Sale Price"
-            value={textInputValue}
-            onChange={(event) => setTextInputValue(event.target.value)}
-            variant="outlined"
-            margin="normal"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <TextField
-            label="% Discount"
-            value={textInputValue}
-            onChange={(event) => setTextInputValue(event.target.value)}
-            variant="outlined"
-            margin="normal"
-            fullWidth
-          />
-        </Grid>
-        </Grid>
-      </div>
-    )}
-   
+
       </FormControl> 
     </form>
 
