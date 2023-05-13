@@ -43,7 +43,7 @@ const handleOnSaleChange = () => {
 
   return (
     <>
-    <h2>Sayem & Videos</h2>
+    <h2>Images & Videos</h2>
     <div style={div1Style}>
     Images!
       </div>
@@ -55,7 +55,7 @@ const handleOnSaleChange = () => {
     <form onSubmit={handleSubmit}>
       
       <FormControl>
-        <InputLabel >Select an option</InputLabel>
+        <InputLabel style={selectStyle} >Choose Category</InputLabel>
         <Select style={selectStyle} value={dropdownValue} onChange={handleDropdownChange}>
           <MenuItem value="option1">Men Footwear</MenuItem>
           <MenuItem value="option2">Women Footwear</MenuItem>
@@ -68,12 +68,12 @@ const handleOnSaleChange = () => {
           <div className="tab-buttons">
             <Button style={tabStyle} onClick={() => handleTabClick(1)}>Men</Button>
             <Button style={tabStyle}onClick={() => handleTabClick(2)}>Women</Button>
-            <Button style={tabStyle}onClick={() => handleTabClick(3)}>Kids</Button>
+            <Button style={tabStyle}onClick={() => handleTabClick(3)}>Create your Own</Button>
           </div>
           <div className="tab-content">
             {activeTab === 1 && <Button style={tabStyle} >Kurta</Button>}
             {activeTab === 2 && <Button style={tabStyle} >Lehanga</Button>}
-            {activeTab === 3 && <Button style={tabStyle} >Shirt</Button>}
+            {activeTab === 3 && <Button>  {textInputValue}</Button>}
            {activeTab === 3 && <TextField
             label="Enter New Category"
             value={textInputValue}
@@ -90,8 +90,7 @@ const handleOnSaleChange = () => {
       )}
     </div>
     <h4 style={titleStyle}>Product Name</h4>
-    <br></br>
-    <p>Basic Info</p>
+    <h5>Basic Info</h5>
     <br></br>
     <Grid container spacing={2} alignItems="center">
         <Grid item xs={4}>
@@ -136,7 +135,139 @@ const handleOnSaleChange = () => {
             variant="outlined"
             margin="normal"
           />
-
+           <FormControlLabel
+      control={
+        <Switch checked={isOnSale} onChange={handleOnSaleChange} />
+      }
+      label="On Sale"
+    />
+    {isOnSale && (
+      <div>
+     <Grid container spacing={2} alignItems="center">
+        <Grid item xs={4}>
+          <TextField
+            label="₹ Sale Price"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label="% Discount"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        </Grid>
+      </div>
+    )}
+               <FormControlLabel
+      control={
+        <Switch checked={isOnSale} onChange={handleOnSaleChange} />
+      }
+      label="Show price per unit"
+    />
+    {isOnSale && (
+      <div>
+     <Grid container spacing={2} alignItems="center">
+        <Grid item xs={4}>
+          <TextField
+            label="Total products quantity in units"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label="Base Units"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        </Grid>
+       
+      </div>
+    )}
+     <Grid item xs={8}>
+      <h5>Base price per units</h5>
+          <TextField
+        style={inputStyle}
+            label="Base Units"
+            placeholder='₹'
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid container spacing={2} alignItems="center">
+        <Grid item xs={4}>
+          <TextField
+            label="₹ Cost of Goods"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label="₹ Profit"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label="Margin"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        </Grid>
+        <h2>Edit Product option</h2>
+        <Grid container spacing={2} alignItems="center">
+        <Grid item xs={4}>
+          <TextField
+            label="₹ Cost of Goods"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label="₹ Profit"
+            value={textInputValue}
+            onChange={(event) => setTextInputValue(event.target.value)}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+        </Grid>
+        </Grid>
       </FormControl> 
     </form>
 
@@ -165,10 +296,20 @@ const div2Style = {
   width: '200px',
   height:'150px'
 };
+const inputStyle = {
+width:'250px',
+fontSize: '18px',
+borderWidth:'1px',
+marginBottom:'30px'
+
+
+};
 const buttonStyle = {
   width: '33%',
-  //  marginLeft:'20px',
-   marginTop:"30px",
+  display: 'inline-block',
+  marginTop: '-82px',
+  marginLeft: '347px',
+  height:'50px',
     color: 'white',
     backgroundColor: '#7d5ffe',
 };
@@ -180,6 +321,7 @@ const tabStyle = {
     backgroundColor: '#7d5ffe',
 };
 const selectStyle = {
+  display: 'inline-block',
   width: '33%',
     alignItems: 'center',
     justifyContent: 'center',
